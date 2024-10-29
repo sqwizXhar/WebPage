@@ -1,0 +1,191 @@
+body {
+    background: linear-gradient(40deg, #423189, #53377A, #660099, #8000FF, #512da8, #cccccc 50%);
+    background-size: 150% 150%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.profile-container {
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    position: relative;
+    overflow: hidden;
+    width: 800px;
+    height: auto;
+}
+
+.profile-info {
+    text-align: center;
+    padding: 20px;
+}
+
+.profile-info h1 {
+    margin-bottom: 10px;
+}
+
+.profile-info img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.profile-info p {
+    font-size: 14px;
+    line-height: 20px;
+    margin: 10px 0;
+}
+
+.profile-info a {
+    color: #333;
+    font-size: 13px;
+    text-decoration: none;
+    margin: 15px 0;
+}
+
+.logout-btn {
+    display: inline-block;
+    background-color: #f54254;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: 1px solid #512da8;
+    border-radius: 8px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.page {
+    margin-bottom: 15px;
+}
+
+.page a {
+    margin: 0 10px;
+    color: #512da8;
+    text-decoration: none;
+    font-size: 25px;
+}
+
+.delete-btn{
+    width: 50%;
+    background-color: #512da8;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 10px 45px;
+    cursor: pointer;
+    color: #ffffff;
+    border-radius: 8px;
+    text-transform: uppercase;
+}
+
+/*.card{*/
+/*    margin: 0 auto;*/
+/*    padding: 4px;*/
+/*    width: 800px;*/
+/*    text-align: center;*/
+/*    border-radius: 30px;*/
+/*    position: relative;*/
+/*}*/
+
+
+/*@property --angle {*/
+/*    syntax: "<angle>";*/
+/*    initial-value: 0deg;*/
+/*    inherits: false;*/
+/*}*/
+
+/*.card::after, .card::before{*/
+/*    content: '';*/
+/*    position: absolute;*/
+/*    height: 100%;*/
+/*    width: 100%;*/
+/*    background-image: conic-gradient(from var(--angle),  #423189, #53377A, #660066, #660099, #8000FF, #CD00CD);*/
+/*    top: 50%;*/
+/*    left: 50%;*/
+/*    translate: -50% -50%;*/
+/*    z-index: -1;*/
+/*    padding: 3px;*/
+/*    border-radius: 35px;*/
+/*    animation: 3s spin linear infinite;*/
+/*}*/
+
+/*.card::before{*/
+/*    filter: blur(1.5rem);*/
+/*    opacity: 10;*/
+/*}*/
+
+/*@keyframes spin {*/
+/*    from{*/
+/*        --angle: 0deg;*/
+/*    }*/
+/*    to{*/
+/*        --angle: 360deg;*/
+/*    }*/
+/*}*/
+
+/*button {*/
+/*    background-color: #512da8;*/
+/*    color: #ffffff;*/
+/*    font-size: 12px;*/
+/*    padding: 10px 45px;*/
+/*    border: 1px solid #ffffff;*/
+/*    border-radius: 8px;*/
+/*    font-weight: 600;*/
+/*    letter-spacing: 1px;*/
+/*    text-transform: uppercase;*/
+/*    margin-top: 10px;*/
+/*    cursor: pointer;*/
+/*}*/
+
+.create-page-btn{
+    width: 50%;
+    background-color: #512da8;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 10px 45px;
+    cursor: pointer;
+    color: #ffffff;
+    border-radius: 8px;
+    text-transform: uppercase;
+}
+
+.form-page{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #512da8;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+form label {
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+form input, form select, form textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid #512da8;
+    font-size: 14px;
+    margin-bottom: 15px;
+    background: #ffffff;
+}
+
+form input:focus, form select:focus, form textarea:focus {
+    border-color: #8000FF;
+    outline: none;
+}
+
+form textarea {
+    resize: none;
+    height: 90px;
+}
