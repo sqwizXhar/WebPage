@@ -1,7 +1,7 @@
 <?php
     $host = 'localhost';
-    $username = 'postgres';
-    $password = 'sqweezey17))';
+    $username = '';
+    $password = '';
     $dbname = '';
 
     try {
