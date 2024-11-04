@@ -1,5 +1,6 @@
 <?php
     session_start();
+    require_once 'validation/validator.php';
 
     if(isset($_SESSION['user'])) {
         header('location: home.php');
@@ -9,6 +10,7 @@
     if (isset($_SESSION['message'])) {
         $message = $_SESSION['message'];
         $messageClass = strpos($message, 'successful') !== false ? 'msg-success' : 'msg-error';
+        unset($_SESSION['message']);
     }
 ?>
 
@@ -25,7 +27,7 @@
 <body>
 <div class="card">
 
-    <div class="container" id="container">
+    <div class="container register" id="container">
 
         <div class="form-container sign-up">
 
@@ -51,60 +53,61 @@
                     </a>
                 </div>
 
-                <label for="username">
+                <label for="username" class="label-register">
                     <input type="text"
+                           class="register-input"
                            id="username"
                            name="username"
                            placeholder="Username"
-                           required
                     >
                 </label>
 
-                <label for="email">
+                <label for="email" class="label-register">
                     <input type="email"
+                           class="register-input"
                            id="email"
                            name="email"
                            placeholder="E-mail"
-                           required
                     >
                 </label>
 
-                <label for="profile_picture">
+                <label for="profile_picture" class="label-register">
                     <input type="file"
+                           class="register-input"
                            id="profile_picture"
                            name="profile_picture"
-                           required
                     >
                 </label>
 
-                <label for="password">
+                <label for="password" class="label-register">
                     <input type="password"
+                           class="register-input"
                            id="password"
                            name="password"
                            placeholder="Password"
                            autocomplete="new-password"
-                           required
+                           minlength="4"
+                           maxlength="16"
                     >
                 </label>
 
-                <label for="password_confirm">
+                <label for="password_confirm" class="label-register">
                     <input type="password"
+                           class="register-input"
                            id="password_confirm"
                            name="password_confirm"
                            placeholder="Password confirmation"
-                           required
                     >
                 </label>
-                <button type="submit">Sign Up</button>
+                <button type="submit" class="register-login-btn">Sign Up</button>
 
                 <p>
-                    already have an account - <a class="link" href="login.php">log in to your account</a>
+                    already have an account - <a class="link-to-register" href="index.php">log in to your account</a>
                 </p>
 
-                <?php if (isset($_SESSION['message'])): ?>
-                    <p class="<?= $messageClass ?>"><?= $_SESSION['message'] ?></p>
-                <?php endif; unset($_SESSION['message']); ?>
-
+                <?php if (isset($message)): ?>
+                    <p class="<?= $messageClass ?>"><?= $message ?></p>
+                <?php endif; ?>
             </form>
 
         </div>

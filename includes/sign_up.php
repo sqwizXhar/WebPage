@@ -9,13 +9,6 @@
         $password = $_POST['password'];
         $password_confirm = $_POST['password_confirm'];
 
-//        $_SESSION['validation'] = [
-//            'username' => 'Invalid name',
-//            'password' => 'Invalid password',
-//            'email' => 'Invalid email',
-//            'password_confirm' => 'Invalid password Confirm'
-//        ];
-
         if ($password === $password_confirm) {
 
             $path = 'uploads/' . time() . $_FILES['profile_picture']['name'];
@@ -37,7 +30,7 @@
             ]);
 
             $_SESSION['message'] = 'Registration was successful!';
-            header('location: ../login.php');
+            header('location: ../index.php');
             exit();
 
         } else {

@@ -10,44 +10,41 @@
             $this->pdo = $pdo;
         }
 
-        public function addPage(Page $page) {
-            if ($page instanceof BlogPage) {
-                $stmt = $this->pdo->prepare('INSERT INTO pages (user_id, title, content, publish_date) VALUES (:user_id, :title, :content, :publish_date)');
-                $stmt->execute([
-                    ':user_id' => $page->getUserId(),
-                    ':title' => $page->getTitle(),
-                    ':content' => $page->getContent(),
-                    ':publish_date' => $page->getPublishDate()
-                ]);
+        public function prepareAttributes(Page $page, bool $isUpdate = false): array {
+            $attributes = [
+              ':user_id' => $page->getUserId(),
+              ':title' => $page->getTitle(),
+              ':content' => $page->getContent(),
+            ];
+
+            if($page instanceof BlogPage) {
+                $attributes[':publish_date'] = $page->getPublishDate();
+                $sql = $isUpdate
+                    ? 'UPDATE pages SET title = :title, content = :content, publish_date = :publish_date WHERE id = :id AND user_id = :user_id'
+                    : 'INSERT INTO pages (user_id, title, content, publish_date) VALUES (:user_id, :title, :content, :publish_date)';
             } else {
-                $stmt = $this->pdo->prepare('INSERT INTO pages (user_id, title, content) VALUES (:user_id, :title, :content)');
-                $stmt->execute([
-                    ':user_id' => $page->getUserId(),
-                    ':title' => $page->getTitle(),
-                    ':content' => $page->getContent()
-                ]);
+                $sql = $isUpdate
+                    ? 'UPDATE pages SET title = :title, content = :content WHERE id = :id AND user_id = :user_id'
+                    : 'INSERT INTO pages (user_id, title, content) VALUES (:user_id, :title, :content)';
             }
+
+            if($isUpdate) {
+                $attributes[':id'] = $page->getId();
+            }
+
+            return [$sql, $attributes];
+        }
+
+        public function addPage(Page $page) {
+            list($sql, $attributes) = $this->prepareAttributes($page);
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute($attributes);
         }
 
         public function updatePage(Page $page) {
-            if ($page instanceof BlogPage) {
-                $stmt = $this->pdo->prepare('UPDATE pages SET title = :title, content = :content, publish_date = :publish_date WHERE id = :id AND user_id = :user_id');
-                $stmt->execute([
-                    ':id' => $page->getId(),
-                    ':user_id' => $page->getUserId(),
-                    ':title' => $page->getTitle(),
-                    ':content' => $page->getContent(),
-                    ':publish_date' => $page->getPublishDate()
-                ]);
-            } else {
-                $stmt = $this->pdo->prepare('UPDATE pages SET title = :title, content = :content WHERE id = :id AND user_id = :user_id');
-                $stmt->execute([
-                    ':id' => $page->getId(),
-                    ':user_id' => $page->getUserId(),
-                    ':title' => $page->getTitle(),
-                    ':content' => $page->getContent()
-                ]);
-            }
+            list($sql, $attributes) = $this->prepareAttributes($page, true);
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute($attributes);
         }
 
         public function removePage($id) {

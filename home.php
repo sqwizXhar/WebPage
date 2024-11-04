@@ -4,7 +4,7 @@
     require_once 'includes/db_connect.php';
 
     if (!isset($_SESSION['user'])) {
-        header('Location: ../login.php');
+        header('Location: ../index.php');
         exit();
     }
 
@@ -18,15 +18,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/home.css">
+    <link rel="stylesheet" href="assets/main.css">
     <title>Home</title>
 </head>
 <body>
-<div class="card">
+<div class="home-card">
 
     <div class="profile-container">
 
         <div class="profile-info">
+
             <h1>Welcome, <?= $_SESSION['user']['username'] ?>!</h1>
 
             <img src="<?= $_SESSION['user']['profile_picture'] ?>" alt="Profile Picture" width="100">
@@ -56,15 +57,17 @@
 
             <h2>Add New Page:</h2>
             <form class="form-page" action="actions/create_page.php" method="post">
+
                 <label for="type">
                     Select Page Type:
-                    <select name="type" id="type" required>
-                        <option value="static">Static Page</option>
-                        <option value="blog">Blog Page</option>
-                    </select>
                 </label>
 
-                <label for="title">Title:</label>
+                <select name="type" id="type" required>
+                    <option value="static">Static Page</option>
+                    <option value="blog">Blog Page</option>
+                </select>
+
+                <label for="title" class="label-title">Title:</label>
 
                 <input type="text"
                        name="title"
@@ -73,7 +76,7 @@
                        required
                 >
 
-                <label for="content">Content:</label>
+                <label for="content" class="label-content">Content:</label>
 
                 <textarea name="content"
                           id="content"
@@ -85,6 +88,8 @@
             </form>
 
             <a href="includes/log_out.php" class="logout-btn">Log out</a>
+
+            <script src="js/autoGrow.js"></script>
         </div>
 
     </div>

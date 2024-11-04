@@ -7,21 +7,6 @@
         $username = $_POST['username'];
         $password = md5($_POST['password']);
 
-//        $_SESSION['validation'] = [];
-//
-//        if(empty($username)){
-//            $_SESSION['validation']['username'] = "Invalid username";
-//        }
-//
-//        if(empty($password)){
-//            $_SESSION['validation']['password'] = "Invalid password";
-//        }
-//
-//        if(!empty($_SESSION['validation'])){
-//            header('location: login.php');
-//            exit();
-//        }
-
         $found_user = 'SELECT * FROM user_data WHERE username = :username AND password = :password';
         $stmt = $pdo->prepare($found_user);
         $stmt->execute([
@@ -42,7 +27,6 @@
             header('Location: ../home.php');
         }
         else{
-            $_SESSION['message'] = 'Invalid username or password';
-            header("location: ../login.php");
+            header("location: ../index.php");
         }
 }
