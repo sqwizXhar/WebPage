@@ -197,6 +197,25 @@ body {
     height: 100vh;
 }
 
+/* Style autofill fields so they remain transparent */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+    box-shadow: 0 0 0 1000px transparent inset !important;
+    -webkit-text-fill-color: #000 !important;
+    background-clip: text !important;
+    background-color: transparent !important;
+    color: #000 !important;
+}
+
+
 /* Profile Container */
 .profile-container {
     position: relative;
@@ -470,5 +489,53 @@ h1 {
 
 .msg-error {
     color: red;
-    margin-top: 5px;
 }
+
+/* Styles for the file selection button */
+.file-upload {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    margin: 5px 0;
+    padding: 10px 15px;
+    font-size: 13px;
+    border-radius: 15px;
+    outline: none;
+    background-color: transparent;
+    border: 1px solid #ba52d1;
+    color: #918494;
+    cursor: pointer;
+    text-align: start;
+    transition: all 0.3s ease;
+}
+
+.file-upload:hover {
+    background-color: #ba52d1;
+    color: white;
+}
+
+.file-upload input[type="file"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.file-upload.loaded {
+    opacity: 0.5;
+    background-color: #dcdcdc;
+    color: #555;
+}
+
+
+
+
+
+
+
