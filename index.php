@@ -1,18 +1,5 @@
 <?php
-    session_start();
-    require_once 'validation/validator.php';
-
-    if (isset($_SESSION['user'])) {
-        header('Location: home.php');
-        exit();
-    }
-
-    $messageClass = '';
-    if (isset($_SESSION['message'])) {
-        $message = $_SESSION['message'];
-        $messageClass = strpos($message, 'successful') !== false ? 'msg-success' : 'msg-error';
-        unset($_SESSION['message']);
-    }
+    require_once 'helpers/session_helpers.php';
 ?>
 
 <!doctype html>
@@ -32,7 +19,7 @@
 
         <div class="form-container sign-in">
 
-            <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
+            <form action="includes/sign_in.php" method="post">
                 <h1>Sign in</h1>
 
                 <div class="icons">
@@ -59,6 +46,7 @@
                            id="username"
                            name="username"
                            placeholder="Username"
+                           value="<?php echo htmlspecialchars($form_data['username'] ?? '', ENT_QUOTES); ?>"
                     >
                 </label>
 
@@ -75,7 +63,7 @@
                 <button type="submit" class="register-login-btn">Sign In</button>
 
                 <p>
-                    No account yet? - <a class="link-to-register" href="register.php">Register an account</a>
+                    no account yet? - <a class="link-to-register" href="register.php">Register an account</a>
                 </p>
 
                 <?php if (isset($message)): ?>

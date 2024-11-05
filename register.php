@@ -1,28 +1,15 @@
 <?php
-    session_start();
-    require_once 'validation/validator.php';
-
-    if(isset($_SESSION['user'])) {
-        header('location: home.php');
-    }
-
-    $messageClass = '';
-    if (isset($_SESSION['message'])) {
-        $message = $_SESSION['message'];
-        $messageClass = strpos($message, 'successful') !== false ? 'msg-success' : 'msg-error';
-        unset($_SESSION['message']);
-    }
+    require_once 'helpers/session_helpers.php';
 ?>
 
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" href="assets/main.css">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <title>Sing Up</title>
+    <link rel="stylesheet" href="assets/main.css">
+    <title>Sign Up</title>
 </head>
 <body>
 <div class="card">
@@ -59,6 +46,7 @@
                            id="username"
                            name="username"
                            placeholder="Username"
+                           value="<?php echo htmlspecialchars($form_data['username'] ?? '', ENT_QUOTES); ?>"
                     >
                 </label>
 
@@ -68,15 +56,18 @@
                            id="email"
                            name="email"
                            placeholder="E-mail"
+                           value="<?php echo htmlspecialchars($form_data['email'] ?? '', ENT_QUOTES); ?>"
                     >
                 </label>
 
                 <label for="profile_picture" class="label-register">
-                    <input type="file"
-                           class="register-input"
-                           id="profile_picture"
-                           name="profile_picture"
-                    >
+                    <span class="file-upload">Choose profile picture
+                        <input type="file"
+                               id="profile_picture"
+                               name="profile_picture"
+                               accept="image/jpeg,image/jpg,image/png,image/gif,image/bmp"
+                        >
+                    </span>
                 </label>
 
                 <label for="password" class="label-register">
@@ -115,6 +106,6 @@
     </div>
 
 </div>
-
+    <script src="js/fileUpload.js"></script>
 </body>
 </html>
