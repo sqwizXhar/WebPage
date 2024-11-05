@@ -13,6 +13,7 @@
 
     $pages = $pageManager->getAllPages($user_id);
 ?>
+
 <!doctype html>
 <html lang="en">
 <head>
