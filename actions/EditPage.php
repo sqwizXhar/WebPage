@@ -1,10 +1,10 @@
 <?php
     session_start();
-    require_once '../includes/db_connect.php';
+    require_once '../includes/DbConnect.php';
     require_once '../models/PageManager.php';
 
     if (!isset($_SESSION['user'])) {
-        header('Location: ../index.php');
+        header('Location: ../Index.php');
         exit();
     }
 
@@ -14,7 +14,7 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $page = new Page($_POST['id'], $user_id, $_POST['title'], $_POST['content']);
         $pageManager->updatePage($page);
-        header('Location: ../home.php');
+        header('Location: ../Home.php');
         exit();
     } else {
         if (isset($_GET['id'])) {
@@ -29,6 +29,7 @@
         }
     }
 ?>
+
 <!doctype html>
 <html lang="en">
 <head>

@@ -32,7 +32,6 @@
             return
                 '<h1>' . $this->title . '</h1>' .
                 '<p>' . $this->content . '</p>';
-//            '<a href="../home.php" class="back-button">Back to Profile</a>';
         }
 
     }

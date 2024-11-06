@@ -1,14 +1,15 @@
 <?php
-    require_once 'helpers/session_helpers.php';
+require_once 'helpers/SessionHelpers.php';
 ?>
 
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="assets/main.css">
+    <link rel="stylesheet" href="assets/Main.css">
     <title>Sign Up</title>
 </head>
 <body>
@@ -18,7 +19,7 @@
 
         <div class="form-container sign-up">
 
-            <form action="includes/sign_up.php" method="post" enctype="multipart/form-data">
+            <form action="includes/SignUp.php" method="post" enctype="multipart/form-data">
 
                 <h1>Create Account</h1>
 
@@ -93,7 +94,7 @@
                 <button type="submit" class="register-login-btn">Sign Up</button>
 
                 <p>
-                    already have an account - <a class="link-to-register" href="index.php">log in to your account</a>
+                    already have an account - <a class="link-to-register" href="Index.php">log in to your account</a>
                 </p>
 
                 <?php if (isset($message)): ?>
@@ -106,6 +107,6 @@
     </div>
 
 </div>
-    <script src="js/fileUpload.js"></script>
+<script src="js/FileUpload.js"></script>
 </body>
 </html>

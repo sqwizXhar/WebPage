@@ -3,10 +3,10 @@
     require_once '../models/PageManager.php';
     require_once '../models/StaticPage.php';
     require_once '../models/BlogPage.php';
-    require_once '../includes/db_connect.php';
+    require_once '../includes/DbConnect.php';
 
     if (!isset($_SESSION['user'])) {
-        header('Location: ../index.php');
+        header('Location: ../IIndex.php');
         exit();
     }
 
@@ -27,7 +27,7 @@
             }
             if ($page) {
                 $pageManager->addPage($page);
-                header('Location: ../home.php');
+                header('Location: ../Home.php');
                 exit();
             }
         }

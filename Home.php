@@ -1,10 +1,10 @@
 <?php
     session_start();
     require_once 'models/PageManager.php';
-    require_once 'includes/db_connect.php';
+    require_once 'includes/DbConnect.php';
 
     if (!isset($_SESSION['user'])) {
-        header('Location: ../index.php');
+        header('Location: ../IIndex.php');
         exit();
     }
 
@@ -19,7 +19,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/main.css">
+    <link rel="stylesheet" href="assets/Main.css">
     <title>Home</title>
 </head>
 <body>
@@ -38,13 +38,13 @@
             <h2>Your Pages:</h2>
             <?php foreach ($pages as $page): ?>
                 <div class="page">
-                    <a href="actions/view_page.php?id=<?= $page->getId() ?>" target="_blank">
+                    <a href="actions/ViewPage.php?id=<?= $page->getId() ?>" target="_blank">
                         <?= $page->getTitle() ?>
                     </a>
 
-                    <a href="actions/edit_page.php?id=<?= $page->getId() ?>">Edit</a>
+                    <a href="actions/EditPage.php?id=<?= $page->getId() ?>">Edit</a>
 
-                    <form class="actions-pages" action="actions/delete_page.php" method="post" style="display:inline;">
+                    <form class="actions-pages" action="actions/DeletePage.php" method="post" style="display:inline;">
                         <input type="hidden"
                                name="id"
                                value="<?= $page->getId() ?>"
@@ -57,7 +57,7 @@
             <?php endforeach; ?>
 
             <h2>Add New Page:</h2>
-            <form class="form-page" action="actions/create_page.php" method="post">
+            <form class="form-page" action="actions/CreatePage.php" method="post">
 
                 <label for="type">
                     Select Page Type:
@@ -88,9 +88,9 @@
                 <button class="create-page-btn" type="submit">Create Page</button>
             </form>
 
-            <a href="includes/log_out.php" class="logout-btn">Log out</a>
+            <a href="includes/LogOut.php" class="logout-btn">Log out</a>
 
-            <script src="js/autoGrow.js"></script>
+            <script src="js/AutoGrow.js"></script>
         </div>
 
     </div>

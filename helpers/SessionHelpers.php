@@ -1,8 +1,9 @@
 <?php
-    require_once 'validation_helpers.php';
+//    require_once __DIR__ . '/../models/FormHelper.php';
+    require_once '../models/FormHelper.php';
 
     if (isset($_SESSION['user'])) {
-        header('location: home.php');
+        header('location: Home.php');
         exit();
     }
 

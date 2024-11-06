@@ -1,5 +1,5 @@
 <?php
-require_once 'Page.php';
+    require_once 'Page.php';
 
     class StaticPage extends Page
     {

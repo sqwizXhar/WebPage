@@ -1,5 +1,5 @@
 <?php
-    require_once 'helpers/session_helpers.php';
+    require_once 'helpers/SessionHelpers.php';
 ?>
 
 <!doctype html>
@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" href="assets/main.css">
+    <link rel="stylesheet" href="assets/Main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Sign In</title>
 </head>
@@ -19,7 +19,7 @@
 
         <div class="form-container sign-in">
 
-            <form action="includes/sign_in.php" method="post">
+            <form action="includes/SignIn.php" method="post">
                 <h1>Sign in</h1>
 
                 <div class="icons">
@@ -63,7 +63,7 @@
                 <button type="submit" class="register-login-btn">Sign In</button>
 
                 <p>
-                    no account yet? - <a class="link-to-register" href="register.php">Register an account</a>
+                    no account yet? - <a class="link-to-register" href="Register.php">Register an account</a>
                 </p>
 
                 <?php if (isset($message)): ?>

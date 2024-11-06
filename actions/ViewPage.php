@@ -1,6 +1,6 @@
 <?php
     require_once '../models/PageManager.php';
-    require_once '../includes/db_connect.php';
+    require_once '../includes/DbConnect.php';
 
     $pageManager = new PageManager($pdo);
 
@@ -16,6 +16,7 @@
     }
 
 ?>
+
 <!doctype html>
 <html lang="en">
 <head>

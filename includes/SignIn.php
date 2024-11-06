@@ -1,25 +1,25 @@
 <?php
-    require_once '../includes/db_connect.php';
-    require_once '../helpers/validation_helpers.php';
+    require_once '../includes/DbConnect.php';
+    require_once '../models/FormHelper.php';
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        $username = clear_data($_POST['username']);
-        $password = md5(clear_data($_POST['password']));
+        $username = FormHelper::clearData($_POST['username']);
+        $password = md5(FormHelper::clearData($_POST['password']));
 
-        set_form_data([
+        FormHelper::setFormData([
             'username' => $username
         ]);
 
-        $check_user_query = 'SELECT * FROM user_data WHERE username = :username';
-        $stmt = $pdo->prepare($check_user_query);
+        $checkUserQuery = 'SELECT * FROM user_data WHERE username = :username';
+        $stmt = $pdo->prepare($checkUserQuery);
         $stmt->execute([
             ':username' => $username]
         );
 
         if ($stmt->rowCount() > 0) {
-            $check_password_query = 'SELECT * FROM user_data WHERE username = :username AND password = :password';
-            $stmt = $pdo->prepare($check_password_query);
+            $checkPasswordQuery = 'SELECT * FROM user_data WHERE username = :username AND password = :password';
+            $stmt = $pdo->prepare($checkPasswordQuery);
             $stmt->execute([
                 'username' => $username,
                 'password' => $password
@@ -33,19 +33,19 @@
                     'email' => $user['email'],
                     'profile_picture' => $user['profile_picture'],
                 ];
-                clear_form_data();
-                header('Location: ../home.php');
+                FormHelper::clearFormData();
+                header('Location: ../Home.php');
                 exit();
             } else {
                 $_SESSION['message'] = 'Invalid password';
                 $_SESSION['form_data']['password'] = '';
-                header('Location: ../index.php');
+                header('Location: ../Index.php');
                 exit();
             }
         } else {
             $_SESSION['message'] = 'User does not exist';
-            clear_form_data();
-            header('Location: ../index.php');
+            FormHelper::clearFormData();
+            header('Location: ../Index.php');
             exit();
         }
     }

@@ -1,10 +1,10 @@
 <?php
     session_start();
-    require_once '../includes/db_connect.php';
+    require_once '../includes/DbConnect.php';
     require_once '../models/PageManager.php';
 
     if (!isset($_SESSION['user'])) {
-        header('Location: ../index.php');
+        header('Location: ../Index.php');
         exit();
     }
 
@@ -16,7 +16,7 @@
         if ($page && $page->getUserId() == $user_id) {
             $pageManager->removePage($_POST['id']);
         }
-        header('Location: ../home.php');
+        header('Location: ../Home.php');
         exit();
     } else {
         echo 'ID is required';
