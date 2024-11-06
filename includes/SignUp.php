@@ -7,14 +7,14 @@
         $username = FormHelper::clearData( $_POST['username']);
         $email = FormHelper::clearData($_POST['email']);
         $password = FormHelper::clearData($_POST['password']);
-        $password_confirm = FormHelper::clearData($_POST['password_confirm']);
+        $passwordConfirm = FormHelper::clearData($_POST['password_confirm']);
 
        FormHelper::setFormData([
             'username' => $username,
             'email' => $email
         ]);
 
-        if (FormHelper::checkPasswordMatch($password, $password_confirm)) {
+        if (FormHelper::checkPasswordMatch($password, $passwordConfirm)) {
 
             $checkUserQuery = 'SELECT * FROM user_data WHERE username = :username';
             $stmt = $pdo->prepare($checkUserQuery);
@@ -26,7 +26,7 @@
                 exit();
             }
 
-            $path = 'Uploads/' . time() . $_FILES['profile_picture']['name'];
+            $path = 'uploads/' . time() . $_FILES['profile_picture']['name'];
             if (!move_uploaded_file($_FILES['profile_picture']['tmp_name'], '../' . $path)) {
                 $_SESSION['message'] = 'Error loading file';
                 header('Location: ../Register.php');

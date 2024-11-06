@@ -1,5 +1,5 @@
 <?php
-require_once 'helpers/SessionHelpers.php';
+    require_once 'helpers/SessionHelper.php';
 ?>
 
 <!doctype html>

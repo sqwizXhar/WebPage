@@ -11,7 +11,7 @@
         public static function checkPasswordMatch($password, $password_confirm): bool {
             return $password === $password_confirm;
         }
-    
+
         public static function setFormData($data) {
             $_SESSION['form_data'] = $data;
         }
