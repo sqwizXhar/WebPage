@@ -11,7 +11,7 @@
     }
 
     $pageManager = new PageManager($pdo);
-    $user_id = $_SESSION['user']['id'];
+    $userId = $_SESSION['user']['id'];
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $type = $_POST['type'] ?? null;
@@ -20,10 +20,10 @@
 
         if ($type && $title && $content) {
             if ($type == 'static') {
-                $page = new StaticPage(null, $user_id, $title, $content);
+                $page = new StaticPage(null, $userId, $title, $content);
             } else if ($type == 'blog') {
                 $publishDate = date('Y-m-d');
-                $page = new BlogPage(null, $user_id, $title, $content, $publishDate);
+                $page = new BlogPage(null, $userId, $title, $content, $publishDate);
             }
             if ($page) {
                 $pageManager->addPage($page);

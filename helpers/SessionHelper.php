@@ -1,6 +1,5 @@
 <?php
-//    require_once __DIR__ . '/../models/FormHelper.php';
-    require_once '../models/FormHelper.php';
+    require_once __DIR__ . '/../models/FormHelper.php';
 
     if (isset($_SESSION['user'])) {
         header('location: Home.php');

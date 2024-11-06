@@ -9,17 +9,17 @@
     }
 
     $pageManager = new PageManager($pdo);
-    $user_id = $_SESSION['user']['id'];
+    $userId = $_SESSION['user']['id'];
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $page = new Page($_POST['id'], $user_id, $_POST['title'], $_POST['content']);
+        $page = new Page($_POST['id'], $userId, $_POST['title'], $_POST['content']);
         $pageManager->updatePage($page);
         header('Location: ../Home.php');
         exit();
     } else {
         if (isset($_GET['id'])) {
             $page = $pageManager->getPageById($_GET['id']);
-            if (!$page || $page->getUserId() != $user_id) {
+            if (!$page || $page->getUserId() != $userId) {
                 echo "You cannot edit this page.";
                 exit();
             }

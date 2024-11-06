@@ -9,11 +9,11 @@
     }
 
     $pageManager = new PageManager($pdo);
-    $user_id = $_SESSION['user']['id'];
+    $userId = $_SESSION['user']['id'];
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['id'])) {
         $page = $pageManager->getPageById($_POST['id']);
-        if ($page && $page->getUserId() == $user_id) {
+        if ($page && $page->getUserId() == $userId) {
             $pageManager->removePage($_POST['id']);
         }
         header('Location: ../Home.php');
