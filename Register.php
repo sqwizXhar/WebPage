@@ -71,17 +71,24 @@
                     </span>
                 </label>
 
-                <label for="password" class="label-register">
-                    <input type="password"
-                           class="register-input"
-                           id="password"
-                           name="password"
-                           placeholder="Password"
-                           autocomplete="new-password"
-                           minlength="4"
-                           maxlength="16"
-                    >
-                </label>
+                <div class="input-wrapper">
+                    <label for="password" class="label-register">
+                        <input type="password"
+                               class="register-input"
+                               id="password"
+                               name="password"
+                               placeholder="Password"
+                               autocomplete="new-password"
+                               minlength="4"
+                               maxlength="16"
+                        >
+
+                        <span class="toggle-password">
+                            <i class="fa fa-eye" id="togglePasswordIcon"></i>
+                        </span>
+                    </label>
+                </div>
+
 
                 <label for="password_confirm" class="label-register">
                     <input type="password"
@@ -107,6 +114,8 @@
     </div>
 
 </div>
-<script src="js/FileUpload.js"></script>
+    <script src="js/FileUpload.js"></script>
+
+    <script src=js/TogglePassword.js></script>
 </body>
 </html>

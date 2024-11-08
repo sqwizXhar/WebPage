@@ -50,15 +50,21 @@
                     >
                 </label>
 
-                <label for="password" class="label-login">
-                    <input type="password"
-                           class="login-input"
-                           id="password"
-                           name="password"
-                           placeholder="Password"
-                           autocomplete="current-password"
-                    >
-                </label>
+                <div class="input-wrapper">
+                    <label for="password" class="label-login">
+                        <input type="password"
+                               class="login-input"
+                               id="password"
+                               name="password"
+                               placeholder="Password"
+                               autocomplete="current-password"
+                        >
+
+                        <span class="toggle-password">
+                            <i class="fa fa-eye" id="togglePasswordIcon"></i>
+                        </span>
+                    </label>
+                </div>
 
                 <button type="submit" class="register-login-btn">Sign In</button>
 
@@ -77,6 +83,8 @@
     </div>
 
 </div>
+
+    <script src=js/TogglePassword.js></script>
 
 </body>
 </html>

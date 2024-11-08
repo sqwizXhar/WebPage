@@ -441,10 +441,29 @@ select:-webkit-autofill:focus {
     background-color: transparent;
     border: 1px solid #ba52d1;
     margin: 5px 0;
-    padding: 10px 15px;
+    padding: 10px 40px 10px 10px;
     font-size: 13px;
     border-radius: 15px;
     outline: none;
+}
+
+.input-wrapper {
+    position: relative;
+    width: 50%;
+}
+
+.toggle-password{
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #ba52d1;
+    font-size: 18px;
+}
+
+.toggle-password:hover {
+    color: #f54254;
 }
 
 .sign-in,
@@ -532,7 +551,6 @@ h1 {
     background-color: #dcdcdc;
     color: #555;
 }
-
 
 
 
